@@ -1,33 +1,29 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /* global NexT, CONFIG, Velocity */
-
 document.addEventListener('DOMContentLoaded', () => {
-
   var isRight = CONFIG.sidebar.position === 'right';
   var SIDEBAR_WIDTH = CONFIG.sidebar.width || 320;
   var SIDEBAR_DISPLAY_DURATION = 200;
   var mousePos = {};
-
   var sidebarToggleLines = {
     lines: document.querySelector('.sidebar-toggle'),
-    init : function() {
+    init: function () {
       this.lines.classList.remove('toggle-arrow', 'toggle-close');
     },
-    arrow: function() {
+    arrow: function () {
       this.lines.classList.remove('toggle-close');
       this.lines.classList.add('toggle-arrow');
     },
-    close: function() {
+    close: function () {
       this.lines.classList.remove('toggle-arrow');
       this.lines.classList.add('toggle-close');
     }
   };
-
   var sidebarToggleMotion = {
-    sidebarEl       : document.querySelector('.sidebar'),
+    sidebarEl: document.querySelector('.sidebar'),
     isSidebarVisible: false,
-    init            : function() {
+    init: function () {
       sidebarToggleLines.init();
-
       window.addEventListener('mousedown', this.mousedownHandler.bind(this));
       window.addEventListener('mouseup', this.mouseupHandler.bind(this));
       document.querySelector('#sidebar-dimmer').addEventListener('click', this.clickHandler.bind(this));
@@ -37,61 +33,62 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('sidebar:show', this.showSidebar.bind(this));
       window.addEventListener('sidebar:hide', this.hideSidebar.bind(this));
     },
-    mousedownHandler: function(event) {
+    mousedownHandler: function (event) {
       mousePos.X = event.pageX;
       mousePos.Y = event.pageY;
     },
-    mouseupHandler: function(event) {
+    mouseupHandler: function (event) {
       var deltaX = event.pageX - mousePos.X;
       var deltaY = event.pageY - mousePos.Y;
-      var clickingBlankPart = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY)) < 20 && event.target.matches('.main');
+      var clickingBlankPart = Math.sqrt(deltaX * deltaX + deltaY * deltaY) < 20 && event.target.matches('.main');
+
       if (this.isSidebarVisible && (clickingBlankPart || event.target.matches('img.medium-zoom-image, .fancybox img'))) {
         this.hideSidebar();
       }
     },
-    clickHandler: function() {
+    clickHandler: function () {
       this.isSidebarVisible ? this.hideSidebar() : this.showSidebar();
     },
-    mouseEnterHandler: function() {
+    mouseEnterHandler: function () {
       if (!this.isSidebarVisible) {
         sidebarToggleLines.arrow();
       }
     },
-    mouseLeaveHandler: function() {
+    mouseLeaveHandler: function () {
       if (!this.isSidebarVisible) {
         sidebarToggleLines.init();
       }
     },
-    showSidebar: function() {
+    showSidebar: function () {
       this.isSidebarVisible = true;
       this.sidebarEl.classList.add('sidebar-active');
+
       if (typeof Velocity === 'function') {
         Velocity(document.querySelectorAll('.sidebar .motion-element'), isRight ? 'transition.slideRightIn' : 'transition.slideLeftIn', {
           stagger: 50,
-          drag   : true
+          drag: true
         });
       }
 
       sidebarToggleLines.close();
       NexT.utils.isDesktop() && window.anime(Object.assign({
-        targets : document.body,
+        targets: document.body,
         duration: SIDEBAR_DISPLAY_DURATION,
-        easing  : 'linear'
+        easing: 'linear'
       }, isRight ? {
         'padding-right': SIDEBAR_WIDTH
       } : {
         'padding-left': SIDEBAR_WIDTH
       }));
     },
-    hideSidebar: function() {
+    hideSidebar: function () {
       this.isSidebarVisible = false;
       this.sidebarEl.classList.remove('sidebar-active');
-
       sidebarToggleLines.init();
       NexT.utils.isDesktop() && window.anime(Object.assign({
-        targets : document.body,
+        targets: document.body,
         duration: SIDEBAR_DISPLAY_DURATION,
-        easing  : 'linear'
+        easing: 'linear'
       }, isRight ? {
         'padding-right': 0
       } : {
@@ -111,3 +108,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', updateFooterPosition);
   window.addEventListener('scroll', updateFooterPosition);
 });
+
+},{}]},{},[1]);

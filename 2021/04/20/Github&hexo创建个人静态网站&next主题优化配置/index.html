@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yizhe-zheng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这篇文章参考了许多博客和教程的内容，主要是给自己做这个网页做个记录，以防止以后有问题再去搜索浪费时间，后续学到其他的美化功能应该都会添加到这篇文章里，当然也有可能为了增加文章数再开一篇新文章 ┗( ▔, ▔ )┛,参考的博文和教程都放在文章最后面，有问题可以回原文去看看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github&amp;hexo创建个人静态网站&amp;next主题优化配置">
+<meta property="og:url" content="https://yizhe-zheng.github.io/2021/04/20/Github&hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Something">
+<meta property="og:description" content="这篇文章参考了许多博客和教程的内容，主要是给自己做这个网页做个记录，以防止以后有问题再去搜索浪费时间，后续学到其他的美化功能应该都会添加到这篇文章里，当然也有可能为了增加文章数再开一篇新文章 ┗( ▔, ▔ )┛,参考的博文和教程都放在文章最后面，有问题可以回原文去看看。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-20T12:44:51.000Z">
+<meta property="article:modified_time" content="2021-04-23T09:56:26.250Z">
+<meta property="article:author" content="The ZYZ">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="next主题">
+<meta property="article:tag" content="主题优化">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://yizhe-zheng.github.io/2021/04/20/Github&hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Github&hexo创建个人静态网站&next主题优化配置 | Something</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Something</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Hello!</p>
+      <a>
+        <img class="custom-logo-image" src="/images/custom-logo.jpg" alt="Something">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/Yizhe-Zheng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yizhe-zheng.github.io/2021/04/20/Github&hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="The ZYZ">
+      <meta itemprop="description" content="一直想变成程序猿的通信狗">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Something">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Github&hexo创建个人静态网站&next主题优化配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-20 20:44:51" itemprop="dateCreated datePublished" datetime="2021-04-20T20:44:51+08:00">2021-04-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-23 17:56:26" itemprop="dateModified" datetime="2021-04-23T17:56:26+08:00">2021-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" itemprop="url" rel="index"><span itemprop="name">个人网站</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/04/20/Github&hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/04/20/Github&hexo创建个人静态网站&next主题优化配置/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>19k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这篇文章参考了许多博客和教程的内容，主要是给自己做这个网页做个记录，以防止以后有问题再去搜索浪费时间，后续学到其他的美化功能应该都会添加到这篇文章里，当然也有可能为了增加文章数再开一篇新文章 ┗( ▔, ▔ )┛,参考的博文和教程都放在文章最后面，有问题可以回原文去看看。</p>
+<span id="more"></span>
+
+<h1 id="注册一个-Github-账号"><a href="#注册一个-Github-账号" class="headerlink" title="注册一个 Github 账号"></a>注册一个 Github 账号</h1><p>自行使用邮箱注册即可。</p>
+<hr>
+<h1 id="安装设置-Git"><a href="#安装设置-Git" class="headerlink" title="安装设置 Git"></a>安装设置 Git</h1><p><code>Git</code>是开源的分布式版本控制系统，用于敏捷高效地处理项目。网站在本地搭建好后，需要使用<code>Git</code>同步到<code>GitHub</code>存储库。直接搜索<code>Git</code>到官网下载，检测是否安装成功，安装完成后，打开命令行窗口输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p>返回版本信息，说明安装成功。<br>设置<code>Git</code>，依次输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;这里填你的 GitHub 用户名&quot;</span><br><span class="line">git config --global user.email &quot;这里填你的 GitHub 注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>输入下列命令，生成<code>ssh</code>密钥文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;这里填你的 GitHub 注册邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>之后会连续输入三个回车键确认，生成的密钥文件一般在<code>用户目录/.ssh </code>文件夹下，例如我的在<code>C:/Users/ZYZ/.ssh</code>文件夹下。<br>找到<code>id_rsa.pub</code>文件，复制里面的密钥，打开<code>GitHub -&gt; Settings -&gt; SSH keys</code>页面，新建<code> new SSH Key</code>，将复制的密钥添加进去，在<code>Git Bash</code>中或者<code>cmd</code>命令行检测<code>GitHub</code>公钥设置是否成功，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>Git</code>有设置单个文件上传下载时的默认大小，我曾经遇到过，这里提前设置<code>Git</code>缓存值大小，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global https.postBuffer 5242880000</span><br></pre></td></tr></table></figure>
+
+<p>这个设置的数值大约是<code>500M</code>。</p>
+<hr>
+<h1 id="安装-Node-js-和-npm"><a href="#安装-Node-js-和-npm" class="headerlink" title="安装 Node.js 和 npm"></a>安装 Node.js 和 npm</h1><p>直接搜索<code>Node.js</code>到官网下载<br>安装时勾选<code>Add to Path</code>,注意安装<code>Node.js</code>包含环境变量及<code>npm</code>的安装，安装后，检测<code>Node.js</code>是否安装成功，在命令行中输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+
+<p>返回版本信息，则成功，检测<code>npm</code>是否安装成功，在命令行中输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>返回版本信息，则成功。如果未成功，则输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="安装-Hexo-生成博客文件"><a href="#安装-Hexo-生成博客文件" class="headerlink" title="安装 Hexo,生成博客文件"></a>安装 Hexo,生成博客文件</h1><p><code>Hexo</code>就是我们的个人博客网站的框架， 这里需要自己选某个盘创建一个文件夹，可以命名为<code>Blog</code>，<code>Hexo</code>框架与以后自己要编辑发布的网页都在这个文件夹中。命令行进入到这个文件夹，<code>Windows</code>下切换盘符直接使用命令 <code>盘符:</code>，比如切换到 F 盘：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F:</span><br></pre></td></tr></table></figure>
+
+<p>切换文件夹命令<code>cd 文件夹名</code>,比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd Blog</span><br></pre></td></tr></table></figure>
+
+<p>切换到上级目录使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+
+<p>命令行进入到<code>Blog</code>文件夹，使用<code>npm</code>安装<code>Hexo</code>，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装时间较长耐心等待，安装完成后，初始化博客，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>我的流程中创建了<code>Blog</code>文件夹作为博客根目录，因此这里直接在博客根目录使用命令<code>hexo init</code>，如果想在其他文件夹下创建博客根目录可以使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init 这里写想创建的文件夹的名字</span><br></pre></td></tr></table></figure>
+
+<p>上面这条命令会创建一个文件夹作为博客根目录，与我上面的<code>Blog</code>目录一样，因此如果这样创建，之后的配置也要进入到这个文件夹配置。但是要注意，<code>hexo init</code>命令的目标必须是空文件夹。<br>接着生成博客文件，在博客根目录输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>此时，根目录生成<code>public</code>目录最基本的博客文件已经生成，接下来预览博客，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hexo is running at http:&#x2F;&#x2F;localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器，输入网址<code>localhost:4000</code>，即可预览博客。</p>
+<hr>
+<h1 id="Hexo-命令介绍"><a href="#Hexo-命令介绍" class="headerlink" title="Hexo 命令介绍"></a>Hexo 命令介绍</h1><p>常用的<code>Hexo</code>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">hexo n &quot;博客文章名&quot; &#x3D;&#x3D; hexo new &quot;博客文章名&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成博客网页文件</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署生成的博客文件到服务器</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 7000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存</span><br><span class="line"></span><br><span class="line">hexo s --debug #以调试模式启动本地网站</span><br></pre></td></tr></table></figure>
+
+<p>如果配置了博客文件，<code>Ctrl+F5</code>强制刷新后页面不见有变化，可以使用命令<code>hexo clean</code>清理已生成博客网页文件，之后使用<code>hexo g</code>命令重新生成。<br>更改配置文件时，常用命令<code>hexo s --debug</code>以调试模式启动本地网站,此模式下，对文件的更改无需停止网站只需刷新即可看到效果。</p>
+<hr>
+<h1 id="把静态网页部署到-GitHub"><a href="#把静态网页部署到-GitHub" class="headerlink" title="把静态网页部署到 GitHub"></a>把静态网页部署到 GitHub</h1><p>首先，创建在<code>Github</code>上创建一个存储库，名称格式必须是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username.github.io</span><br></pre></td></tr></table></figure>
+
+<p><code>username</code>是你注册<code>Github</code>时设置的用户名，存储库添加好后，到存储库<code>setting</code>页面往下翻可以看到<code>Github pages</code>项目，点进去会提示你，网页已经发布到:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;username.github.io&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有<code>Github pages</code>，则是存储库名称格式有误，需要修改。<br>我们在第一步已经设置添加了密钥，在安装插件，设置博客配置文件后，就可以推送静态网页文件到<code>GitHub</code>存储库了。首先安装插件，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>修改<code> 博客配置文件</code>即博客根目录下的<code>_config.yml </code>以下部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在使用<code>hexo g</code>命令生成博客网页文件后，将文件推送到<code>Github</code>,输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>到这里，你的静态网页已经部署到了<code>Github</code>上,到网址<code>https://username.github.io/</code>即可访问。<br>因为是静态网页，所以当你写好一篇文章，在本地调试好之后，需要再次使用命令<code>hexo d</code>即可更新网页。<br>此外，可以自己注册一个个性的域名，在<code>Github pages</code>与这个网页绑定，这个后面再写。</p>
+<hr>
+<h1 id="next-主题配置优化"><a href="#next-主题配置优化" class="headerlink" title="next 主题配置优化"></a>next 主题配置优化</h1><p><code>Hexo</code>有多种主题可以选择，我使用了<code>next</code>主题,这里写下基本的优化。</p>
+<h2 id="下载-next-主题"><a href="#下载-next-主题" class="headerlink" title="下载 next 主题"></a>下载 next 主题</h2><p>主题在<code>Github</code>社区：<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a><br>在博客根目录输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>这是将<code>next</code>主题文件下载到了博客根目录下<code>themes</code>文件夹下的<code>next</code>文件夹，没有<code>next</code>文件夹的话，会自动新建，速度慢的话，使用镜像下载，以下命令二选一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com.cnpmjs.org&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br><span class="line">git clone https:&#x2F;&#x2F;git.sdut.me&#x2F;theme-next&#x2F;hexo-theme-next themes&#x2F;next</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>Git</code>下载东西慢时一般都可以将链接中的<code>github.com</code>替换为上面的镜像网站加速，后面的一些资源同样适用，还有一些别的镜像源，上面的失效的话，可以搜索引擎查找别的来代替。</p>
+<h2 id="修改主题为-next，并进行基本配置"><a href="#修改主题为-next，并进行基本配置" class="headerlink" title="修改主题为 next，并进行基本配置"></a>修改主题为 next，并进行基本配置</h2><p>主题下载完之后，在你博客根目录下的<code>博客配置文件</code> <code> _config.yml</code>文件中，查找、修改<code>theme</code>值为主题名字<code>next</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+
+<p>设置<code>博客配置文件</code>，<code>title</code>为<code>博客名称</code>，<code>author</code>为<code>作者昵称</code>，<code>description</code>为<code>描述</code>，<code>subtitle</code>为<code>副标题</code>，<code>keywords</code>为<code>关键词</code>，<code>timezone</code>为<code>时区</code>，<code>language</code>为<code>界面语言</code>，可以按需求填写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: Something</span><br><span class="line">subtitle: &quot;Hello!&quot;</span><br><span class="line">description: &quot;一直想变成程序猿的通信狗&quot;</span><br><span class="line">keywords:</span><br><span class="line">author: The ZYZ</span><br><span class="line">language: zh-CN</span><br><span class="line">timezone: &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>next</code>自带四种主题风格，可以在<code>主题配置文件</code>搜索<code>Scheme</code>项修改，，将需要的风格前的<code>#</code>去掉，注意只能开启一个风格。这个<code>主题配置文件</code>和<code>博客配置文件</code>名称是一样的，但是位于下载的 next 主题目录下，修改配置时不要和<code>博客配置文件</code>弄混。<br>修改<code>主题配置文件</code>中<code>url</code>为<code>Github Page</code>给出的链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#39;https:&#x2F;&#x2F;username.github.io&#x2F;project&#39;</span><br><span class="line">url: https:&#x2F;&#x2F;username.github.io</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置博客头像"><a href="#设置博客头像" class="headerlink" title="设置博客头像"></a>设置博客头像</h2><p>编辑<code>主题配置文件</code>，搜索修改字段<code>avatar</code>中<code>url</code>值,设置为头像的链接，可以设置成在线的图片地址，也可以把图片放在本地：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: &#x2F;images&#x2F;avatar.jpg</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true</span><br></pre></td></tr></table></figure>
+
+<p><code>rounded</code>设置是否圆形头像，<code>rotated</code>设置是否鼠标指向时旋转头像。</p>
+<h2 id="设置网站图标"><a href="#设置网站图标" class="headerlink" title="设置网站图标"></a>设置网站图标</h2><p>在<a target="_blank" rel="noopener" href="https://www.easyicon.net/">EasyIcon</a>中分别找一张<code>16*16</code>与<code>32*32</code>的<code>ico</code>图标,或者去别的网站下载或者自己制作，并将图标名称改为<code>favicon16.ico</code>与<code>favicon32.ico</code>，然后把图标放在<code>/themes/next/source/images</code>或者放在根目录的<code>/source/images</code>文件夹里。<br>在<code>主题配置文件</code>内搜索<code>favicon</code>字段，把<code>small</code>、<code>medium</code>字段的地址修改为<code>/images/favicon16.ico</code>与<code>/images/favicon32.ico</code>即可。</p>
+<h2 id="设置赞赏功能"><a href="#设置赞赏功能" class="headerlink" title="设置赞赏功能"></a>设置赞赏功能</h2><p>主题自带<code>支付宝</code>跟<code>微信</code>及<code>比特币</code>打赏功能，只需要<code>主题配置文件</code>中配置启用，并设置<code>微信</code>和<code>支付宝</code>收款二维码图片地址即可开启功能。搜索<code>reward</code>字段，将<code>wechatpay</code>及<code>alipay</code>字段前面的<code>#</code>去掉即可。在<code>source</code>文件夹中放置<code>支付宝</code>跟<code>微信</code>收款码并修改文件名字即可。<code>comment</code>字段自带为打赏按钮上方的文字，不需要的话可以在前面加<code>#</code>注释掉。</p>
+<h2 id="实现全站文章字数统计及阅读时长"><a href="#实现全站文章字数统计及阅读时长" class="headerlink" title="实现全站文章字数统计及阅读时长"></a>实现全站文章字数统计及阅读时长</h2><p>博客根目录输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
+
+<p><code>博客配置文件</code>底部添加如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置加载动画"><a href="#设置加载动画" class="headerlink" title="设置加载动画"></a>设置加载动画</h2><p>最新版本的<code>next</code>主题内置了加载条功能,博客根目录打开命令行，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;git.sdut.me&#x2F;theme-next&#x2F;theme-next-pace themes&#x2F;next&#x2F;source&#x2F;lib&#x2F;pace</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>主题配置文件</code>搜索<code>pace</code>字段，设置<code>enable</code>值为<code>true</code>即可开启加载条功能，按照提示修改下方的<code>theme</code>字段即可修改加载条的样式。</p>
+<h2 id="增加本地搜索功能"><a href="#增加本地搜索功能" class="headerlink" title="增加本地搜索功能"></a>增加本地搜索功能</h2><p>博客根目录打开命令行，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+<p>之后编辑<code>博客配置文件</code>，新增以下内容到任意位置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+
+<p><code>主题配置文件</code>搜索<code>local_search</code>字段，设置<code>enable</code>值为<code>true</code>即可。</p>
+<h2 id="网页底部添加网站运行时间"><a href="#网页底部添加网站运行时间" class="headerlink" title="网页底部添加网站运行时间"></a>网页底部添加网站运行时间</h2><p>打开<code>/themes/next/layout/_partials/</code>文件夹下的<code>footer.swig</code>文件并添加下列代码,代码可以修改为你创建博客的时间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">&lt;span id&#x3D;&quot;timeDate&quot;&gt;载入天数...&lt;&#x2F;span&gt;&lt;span id&#x3D;&quot;times&quot;&gt;载入时分秒...&lt;&#x2F;span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var now &#x3D; new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        var grt&#x3D; new Date(&quot;03&#x2F;04&#x2F;2020 00:00:00&quot;);</span><br><span class="line">        now.setTime(now.getTime()+250);</span><br><span class="line">        days &#x3D; (now - grt ) &#x2F; 1000 &#x2F; 60 &#x2F; 60 &#x2F; 24; dnum &#x3D; Math.floor(days);</span><br><span class="line">        hours &#x3D; (now - grt ) &#x2F; 1000 &#x2F; 60 &#x2F; 60 - (24 * dnum); hnum &#x3D; Math.floor(hours);</span><br><span class="line">        if(String(hnum).length &#x3D;&#x3D;1 )&#123;hnum &#x3D; &quot;0&quot; + hnum;&#125; minutes &#x3D; (now - grt ) &#x2F; 1000 &#x2F;60 - (24 * 60 * dnum) - (60 * hnum);</span><br><span class="line">        mnum &#x3D; Math.floor(minutes); if(String(mnum).length &#x3D;&#x3D;1 )&#123;mnum &#x3D; &quot;0&quot; + mnum;&#125;</span><br><span class="line">        seconds &#x3D; (now - grt ) &#x2F; 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span><br><span class="line">        snum &#x3D; Math.round(seconds); if(String(snum).length &#x3D;&#x3D;1 )&#123;snum &#x3D; &quot;0&quot; + snum;&#125;</span><br><span class="line">        document.getElementById(&quot;timeDate&quot;).innerHTML &#x3D; &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;</span><br><span class="line">        document.getElementById(&quot;times&quot;).innerHTML &#x3D; hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">setInterval(&quot;createtime()&quot;,250);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="增加烟花爆炸效果"><a href="#增加烟花爆炸效果" class="headerlink" title="增加烟花爆炸效果"></a>增加烟花爆炸效果</h2><p>在路径<code>themes/next/source/js/src/</code>下创建文件<code>fireworks.js</code>，添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">function updateCoords(e)&#123;</span><br><span class="line">    pointerX&#x3D;(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,</span><br><span class="line">    pointerY&#x3D;e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top</span><br><span class="line">&#125;</span><br><span class="line">function setParticuleDirection(e)&#123;</span><br><span class="line">    var t&#x3D;anime.random(0,360)*Math.PI&#x2F;180,</span><br><span class="line">    a&#x3D;anime.random(15,60),&#x2F;&#x2F;爆炸范围(50,180)</span><br><span class="line">    n&#x3D;[-1,1][anime.random(0,1)]*a;</span><br><span class="line">    return&#123;x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)&#125;</span><br><span class="line">&#125;</span><br><span class="line">function createParticule(e,t)&#123;</span><br><span class="line">    var a&#x3D;&#123;&#125;;</span><br><span class="line">    return a.x&#x3D;e,</span><br><span class="line">    a.y&#x3D;t,</span><br><span class="line">    a.color&#x3D;colors[anime.random(0,colors.length-1)],</span><br><span class="line">    a.radius&#x3D;anime.random(5,15),&#x2F;&#x2F;(16,32)</span><br><span class="line">    a.endPos&#x3D;setParticuleDirection(a),</span><br><span class="line">    a.draw&#x3D;function()&#123;</span><br><span class="line">        ctx.beginPath(),</span><br><span class="line">        ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),</span><br><span class="line">        ctx.fillStyle&#x3D;a.color,ctx.fill()</span><br><span class="line">    &#125;,a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function createCircle(e,t)&#123;</span><br><span class="line">    var a&#x3D;&#123;&#125;;</span><br><span class="line">    return a.x&#x3D;e,</span><br><span class="line">    a.y&#x3D;t,</span><br><span class="line">    a.color&#x3D;&quot;#F00&quot;,</span><br><span class="line">    a.radius&#x3D;0.1,</span><br><span class="line">    a.alpha&#x3D;0.5,</span><br><span class="line">    a.lineWidth&#x3D;1,&#x2F;&#x2F;6</span><br><span class="line">    a.draw&#x3D;function()&#123;</span><br><span class="line">        ctx.globalAlpha&#x3D;a.alpha,</span><br><span class="line">        ctx.beginPath(),</span><br><span class="line">        ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),</span><br><span class="line">        ctx.lineWidth&#x3D;a.lineWidth,</span><br><span class="line">        ctx.strokeStyle&#x3D;a.color,</span><br><span class="line">        ctx.stroke(),</span><br><span class="line">        ctx.globalAlpha&#x3D;1&#125;,a</span><br><span class="line">    &#125;</span><br><span class="line">function renderParticule(e)&#123;</span><br><span class="line">    for(var t&#x3D;0;t&lt;e.animatables.length;t++)</span><br><span class="line">    &#123;e.animatables[t].target.draw()&#125;</span><br><span class="line">&#125;</span><br><span class="line">function animateParticules(e,t)&#123;</span><br><span class="line">    for(var a&#x3D;createCircle(e,t),n&#x3D;[],i&#x3D;0;i&lt;numberOfParticules;i++)</span><br><span class="line">    &#123;n.push(createParticule(e,t))&#125;</span><br><span class="line">    anime.timeline().add(&#123;targets:n,x:function(e)&#123;return e.endPos.x&#125;,</span><br><span class="line">    y:function(e)&#123;return e.endPos.y&#125;,radius:0.1,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,</span><br><span class="line">    update:renderParticule&#125;).add(&#123;targets:a,radius:anime.random(80,160),lineWidth:0,alpha:&#123;value:0,</span><br><span class="line">        easing:&quot;linear&quot;,duration:anime.random(600,800)&#125;,duration:anime.random(1200,1800),easing:&quot;easeOutExpo&quot;,</span><br><span class="line">        update:renderParticule,offset:0&#125;)&#125;</span><br><span class="line">function debounce(e,t)&#123;</span><br><span class="line">    var a;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var n&#x3D;this,i&#x3D;arguments;</span><br><span class="line">        clearTimeout(a),a&#x3D;setTimeout(function()&#123;e.apply(n,i)&#125;,t)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">var canvasEl&#x3D;document.querySelector(&quot;.fireworks&quot;);</span><br><span class="line">if(canvasEl)</span><br><span class="line">&#123;var ctx&#x3D;canvasEl.getContext(&quot;2d&quot;),</span><br><span class="line">    numberOfParticules&#x3D;8,&#x2F;&#x2F;数目</span><br><span class="line">    pointerX&#x3D;0,</span><br><span class="line">    pointerY&#x3D;0,</span><br><span class="line">    tap&#x3D;&quot;mousedown&quot;,</span><br><span class="line">    colors&#x3D;[&quot;#FF1461&quot;,&quot;#18FF92&quot;,&quot;#5A87FF&quot;,&quot;#FBF38C&quot;],</span><br><span class="line">    setCanvasSize&#x3D;debounce(function()&#123;canvasEl.width&#x3D;2*window.innerWidth,</span><br><span class="line">        canvasEl.height&#x3D;2*window.innerHeight,</span><br><span class="line">        canvasEl.style.width&#x3D;window.innerWidth+&quot;px&quot;,</span><br><span class="line">        canvasEl.style.height&#x3D;window.innerHeight+&quot;px&quot;,</span><br><span class="line">        canvasEl.getContext(&quot;2d&quot;).scale(2,2)&#125;,100),</span><br><span class="line">        render&#x3D;anime(&#123;duration:1&#x2F;0,update:function()&#123;ctx.clearRect(0,0,canvasEl.width,canvasEl.height)&#125;&#125;);</span><br><span class="line">        document.addEventListener(tap,function(e)&#123;&quot;sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;toggle-sidebar&quot;!&#x3D;&#x3D;e.target.id&amp;&amp;&quot;A&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;&quot;IMG&quot;!&#x3D;&#x3D;e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))&#125;,!1),</span><br><span class="line">        setCanvasSize(),window.addEventListener(&quot;resize&quot;,setCanvasSize,!1)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>themes/next/layout/</code>路径下<code>_layout.swig</code>文件，在最下面<code>&lt;/body&gt;</code>行的上面添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.fireworks %&#125;</span><br><span class="line">   &lt;canvas class&#x3D;&quot;fireworks&quot; style&#x3D;&quot;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&quot; &gt;&lt;&#x2F;canvas&gt;</span><br><span class="line">   &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;animejs&#x2F;2.2.0&#x2F;anime.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">   &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;&#x2F;js&#x2F;src&#x2F;fireworks.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>主题配置文件</code>，最后面添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Fireworks</span><br><span class="line">fireworks: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="404-页面创建"><a href="#404-页面创建" class="headerlink" title="404 页面创建"></a>404 页面创建</h2><p>博客根目录下创建<code>404</code>页面，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page 404</span><br></pre></td></tr></table></figure>
+
+<p>在博客根目录下的<code>source/404/</code>路径下的<code>index.md</code>文件中,添加以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">date: 2020-05-28 17:37:33</span><br><span class="line">---</span><br><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">  &lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;content-type&quot; content&#x3D;&quot;text&#x2F;html;charset&#x3D;utf-8;&quot;&#x2F;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge,chrome&#x3D;1&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;robots&quot; content&#x3D;&quot;all&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;robots&quot; content&#x3D;&quot;index,follow&quot;&#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;https:&#x2F;&#x2F;qzone.qq.com&#x2F;gy&#x2F;404&#x2F;style&#x2F;404style.css&quot;&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script type&#x3D;&quot;text&#x2F;plain&quot; src&#x3D;&quot;http:&#x2F;&#x2F;www.qq.com&#x2F;404&#x2F;search_children.js&quot;</span><br><span class="line">            charset&#x3D;&quot;utf-8&quot; homePageUrl&#x3D;&quot;https:&#x2F;&#x2F;username.github.io&quot;  #填自己的博客地址</span><br><span class="line">            homePageName&#x3D;&quot;回到我的主页&quot;&gt;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;qzone.qq.com&#x2F;gy&#x2F;404&#x2F;data.js&quot; charset&#x3D;&quot;utf-8&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;qzone.qq.com&#x2F;gy&#x2F;404&#x2F;page.js&quot; charset&#x3D;&quot;utf-8&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">  &lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>themes/next/languages/</code>路径下<code>zh-CN.yml</code>文件中名字，<code>公益404</code> 修改为<code>公益</code>，再修改<code>主题配置文件</code>，开启<code>menu</code>模块的<code>commonweal</code>标签即可。</p>
+<h2 id="添加-README-md-文件"><a href="#添加-README-md-文件" class="headerlink" title="添加 README.md 文件"></a>添加 README.md 文件</h2><p>每个项目下一般都有一个<code>README.md</code>文件，但是使用<code>hexo d</code>部署到仓库后，项目下是没有<code>README.md</code>文件的。在<code>Hexo</code>目录下的<code>source</code>目录下添加一个<code>README.md</code>文件，修改<code>博客配置文件</code>，将<code>skip_render</code>参数的值设置为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip_render: README.md</span><br></pre></td></tr></table></figure>
+
+<p>再次使用<code>hexo d</code>命令部署博客的时候就不会在渲染<code>README.md</code>这个文件。</p>
+<h2 id="添加网易云音乐"><a href="#添加网易云音乐" class="headerlink" title="添加网易云音乐"></a>添加网易云音乐</h2><p>打开网易云音乐网页版,到歌曲播放界面，生成外链播放器，复制 HTML 代码，<br>在<code>themes/next/layout/_macro/</code>路径下<code>sidebar.swig</code>文件中添加复制的代码。添加到不同位置，播放器的位置也不同，可以自行试验一下，注意不要破坏其他代码段，文件中最后四行代码不能分开。</p>
+<h2 id="添加动态背景"><a href="#添加动态背景" class="headerlink" title="添加动态背景"></a>添加动态背景</h2><p>在博客根目录打开命令行，切换到<code>next</code>主题文件夹，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest source&#x2F;lib&#x2F;canvas-nest</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>主题配置文件</code>,修改下列代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Canvas-nest</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;theme-next&#x2F;theme-next-canvas-nest</span><br><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # 是否在手机上显示</span><br><span class="line">  color: &quot;255,51,51&quot; # RGB颜色设置</span><br><span class="line">  opacity: 0.5 # 线条透明度</span><br><span class="line">  zIndex: -1 # 显示级别</span><br><span class="line">  count: 160 # 线条的数量，越多越卡</span><br></pre></td></tr></table></figure>
+
+<p>如果想使用<code>CDN</code>加速的话需要设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vendors:</span><br><span class="line">  ...</span><br><span class="line">  canvas_nest: &#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;theme-next&#x2F;theme-next-canvas-nest@1.0.0&#x2F;canvas-nest.min.js</span><br><span class="line">  canvas_nest_nomobile: &#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;theme-next&#x2F;theme-next-canvas-nest@1.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加文章目录功能"><a href="#添加文章目录功能" class="headerlink" title="添加文章目录功能"></a>添加文章目录功能</h2><p>我们用<code>markdown</code>写东西的时候会有一级标题，二级标题，文章目录就是由这些构成的。一种方法在博客根目录下<code>source/_data</code>新建一个<code>styles.styl</code>文件。然后查找<code>主题配置文件</code>下的<code>custom_file_path</code>字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">    style: source&#x2F;_data&#x2F;styles.styl</span><br></pre></td></tr></table></figure>
+
+<p>将<code>style</code>前的注释取消掉即可。然后在<code>styles.styl</code>添加代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;文章目录默认展开</span><br><span class="line">.post-toc .nav .nav-child &#123; display: block; &#125;</span><br><span class="line">.post-toc ol &#123;</span><br><span class="line">  font-size : 13px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来初始化文章目录，修改<code>主题配置文件</code>中<code>Table of Contents in the Sidebar</code>部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Table of Contents in the Sidebar</span><br><span class="line"># Front-matter variable (unsupport wrap expand_all).</span><br><span class="line">toc:</span><br><span class="line">  enable: true</span><br><span class="line">  # Automatically add list number to toc.</span><br><span class="line">  number: true</span><br><span class="line">  # If true, all words will placed on next lines if header width longer then sidebar width.</span><br><span class="line">  wrap: true</span><br><span class="line">  # If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span><br><span class="line">  expand_all: true</span><br><span class="line">  # Maximum heading depth of generated toc.</span><br><span class="line">  max_depth: 6</span><br></pre></td></tr></table></figure>
+
+<h2 id="网站背景"><a href="#网站背景" class="headerlink" title="网站背景"></a>网站背景</h2><p>关于<code>主题配置</code>有很多说的都是那个<code>_custom</code>文件。但是这个<code>next</code>主题是没有这个文件的。所以我们还在<code>style.styl</code>文件中配置。配置内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background:url(http:&#x2F;&#x2F;***********&#x2F;******&#x2F;images&#x2F;bg.jpg);&#x2F;&#x2F;图片路径</span><br><span class="line">    background-repeat: no-repeat;&#x2F;&#x2F;是否重复平铺</span><br><span class="line">    background-attachment:fixed;&#x2F;&#x2F;是否随着网页上下滚动而滚动，fixed为固定</span><br><span class="line">    background-position:50% 50%;&#x2F;&#x2F;图片位置</span><br><span class="line">    background-size: cover;&#x2F;&#x2F;图片展示大小</span><br><span class="line">    -webkit-background-size: cover;</span><br><span class="line">    -o-background-size: cover;</span><br><span class="line">    -moz-background-size: cover;</span><br><span class="line">    -ms-background-size: cover;</span><br><span class="line">    opacity: 0.6;&#x2F;&#x2F;设置整个页面的透明度。该透明度如果不加在这里会出现bug，bug就是菜单栏无法点击。</span><br><span class="line">     #footer &gt; div &gt; div &#123;</span><br><span class="line">        color:#000000;&#x2F;&#x2F;底部文字颜色</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.header-inner &#123;</span><br><span class="line">    background: #fff;&#x2F;&#x2F;设置侧边栏透明</span><br><span class="line">    opacity: 1;&#x2F;&#x2F;这里设置为1，否则搜索栏会消失</span><br><span class="line">&#125;</span><br><span class="line">.main-inner &#123;</span><br><span class="line">  background: #fff;</span><br><span class="line">  opacity: 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图片的<code>url</code>替换为你的<code>博客网址+images</code>即可。</p>
+<h2 id="静态资源压缩"><a href="#静态资源压缩" class="headerlink" title="静态资源压缩"></a>静态资源压缩</h2><p>在博客根目录下，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp -g</span><br></pre></td></tr></table></figure>
+
+<p>在依次安装<code>gulp</code>插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp-minify-css --save</span><br><span class="line">npm install gulp-uglify --save</span><br><span class="line">npm install gulp-htmlmin --save</span><br><span class="line">npm install gulp-htmlclean --save</span><br><span class="line">npm install gulp-imagemin --save</span><br></pre></td></tr></table></figure>
+
+<p>在博客根目录下添加<code>gulpfile.js</code>文件，文件内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">var gulp &#x3D; require(&#39;gulp&#39;);</span><br><span class="line">var minifycss &#x3D; require(&#39;gulp-minify-css&#39;);</span><br><span class="line">var uglify &#x3D; require(&#39;gulp-uglify&#39;);</span><br><span class="line">var htmlmin &#x3D; require(&#39;gulp-htmlmin&#39;);</span><br><span class="line">var htmlclean &#x3D; require(&#39;gulp-htmlclean&#39;);</span><br><span class="line">var imagemin &#x3D; require(&#39;gulp-imagemin&#39;);</span><br><span class="line">&#x2F;&#x2F; 压缩css文件</span><br><span class="line">gulp.task(&#39;minify-css&#39;, function() &#123;</span><br><span class="line">  return gulp.src(&#39;.&#x2F;public&#x2F;**&#x2F;*.css&#39;)</span><br><span class="line">  .pipe(minifycss())</span><br><span class="line">  .pipe(gulp.dest(&#39;.&#x2F;public&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 压缩html文件</span><br><span class="line">gulp.task(&#39;minify-html&#39;, function() &#123;</span><br><span class="line">  return gulp.src(&#39;.&#x2F;public&#x2F;**&#x2F;*.html&#39;)</span><br><span class="line">  .pipe(htmlclean())</span><br><span class="line">  .pipe(htmlmin(&#123;</span><br><span class="line">    removeComments: true,</span><br><span class="line">    minifyJS: true,</span><br><span class="line">    minifyCSS: true,</span><br><span class="line">    minifyURLs: true,</span><br><span class="line">  &#125;))</span><br><span class="line">  .pipe(gulp.dest(&#39;.&#x2F;public&#39;))</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 压缩js文件</span><br><span class="line">gulp.task(&#39;minify-js&#39;, function() &#123;</span><br><span class="line">    return gulp.src([&#39;.&#x2F;public&#x2F;**&#x2F;.js&#39;,&#39;!.&#x2F;public&#x2F;js&#x2F;**&#x2F;*min.js&#39;])</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(&#39;.&#x2F;public&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 压缩 public&#x2F;demo 目录内图片</span><br><span class="line">gulp.task(&#39;minify-images&#39;, function() &#123;</span><br><span class="line">    gulp.src(&#39;.&#x2F;public&#x2F;demo&#x2F;**&#x2F;*.*&#39;)</span><br><span class="line">        .pipe(imagemin(&#123;</span><br><span class="line">           optimizationLevel: 5, &#x2F;&#x2F;类型：Number  默认：3  取值范围：0-7（优化等级）</span><br><span class="line">           progressive: true, &#x2F;&#x2F;类型：Boolean 默认：false 无损压缩jpg图片</span><br><span class="line">           interlaced: false, &#x2F;&#x2F;类型：Boolean 默认：false 隔行扫描gif进行渲染</span><br><span class="line">           multipass: false, &#x2F;&#x2F;类型：Boolean 默认：false 多次优化svg直到完全优化</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(&#39;.&#x2F;public&#x2F;uploads&#39;));</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F; 默认任务</span><br><span class="line">gulp.task(&#39;default&#39;, [</span><br><span class="line">  &#39;minify-html&#39;,&#39;minify-css&#39;,&#39;minify-js&#39;,&#39;minify-images&#39;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>只需要每次在执行<code>hexo g</code>命令后执行<code>gulp</code>命令,就可以实现对静态资源的压缩，压缩完成后再执行<code>hexo d</code>命令部署到<code>Github</code>。<br>这里如果使用<code>gulp</code>命令提示缺少<code>gulp</code>，可以执行命令再次安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure>
+
+<h2 id="写博客文章"><a href="#写博客文章" class="headerlink" title="写博客文章"></a>写博客文章</h2><p>在你的博客根目录下输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new article</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>article</code>是你的文章的名称,输入这样的命令之后<code>source/_posts</code>路径下就会生成一个<code>article.md</code>文件，在这个文件下就可以写上博客内容了,是用<code>Markdown</code>的语法去写。<code>Markdown</code>的语法很简单，如果之前没用过可以学一下<code>Markdown</code>语法说明，一般一个小时左右就能掌握。</p>
+<h2 id="创建标签和分类"><a href="#创建标签和分类" class="headerlink" title="创建标签和分类"></a>创建标签和分类</h2><p>创建标签和分类要确定你的<code>博客配置文件</code>是否有打开了<code>tag_dir: tags </code>和<code>category_dir: categories</code>。<br><code>hexo</code>打开标签功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p>这样，博客根目录的<code>source/</code>下生成<code>tags/</code>并生成<code>index.md</code>文件，修改部分内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+
+<p>要为文章设置标签就可以在文章的头部写上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line"> - Tag1</span><br><span class="line"> - Tag2</span><br><span class="line"> - Tag3</span><br></pre></td></tr></table></figure>
+
+<p>比如我现在的这篇文章标签是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">  - Hexo</span><br><span class="line">  - Github</span><br><span class="line">  - next主题</span><br><span class="line">  - 主题优化</span><br></pre></td></tr></table></figure>
+
+<p>打开<code>hexo</code>分类功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+
+<p>同样的，博客根目录的<code>source/</code>下生成<code>categories/</code>并生成<code>index.md</code>文件，修改部分内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+
+<p>要为文章设置分类就可以在文章的头部写上：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line"> - 分类1</span><br><span class="line"> - 分类2</span><br></pre></td></tr></table></figure>
+
+<p>比如这篇文章的分类是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - 个人网站</span><br><span class="line">  - 教程</span><br></pre></td></tr></table></figure>
+
+<h2 id="文章加密访问"><a href="#文章加密访问" class="headerlink" title="文章加密访问"></a>文章加密访问</h2><p>修改<code>themes/next/layout/_partials/</code>路径下的<code>head.swig</code>文件,在<code>&#123;% if theme.pace %&#125;`标签下的`&#123;% endif %&#125;</code>之前插入代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">    (function()&#123;</span><br><span class="line">        if(&#39;&#123;&#123; page.password &#125;&#125;&#39;)&#123;</span><br><span class="line">            if (prompt(&#39;请输入文章密码&#39;) !&#x3D;&#x3D; &#39;&#123;&#123; page.password &#125;&#125;&#39;)&#123;</span><br><span class="line">                alert(&#39;密码错误&#39;);</span><br><span class="line">                history.back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在文章上应用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">title: 个人收藏网页</span><br><span class="line">date: 2021-04-20 13:00:00</span><br><span class="line">type:</span><br><span class="line">top:</span><br><span class="line">comments:</span><br><span class="line">categories: -密码分享</span><br><span class="line">tags: -密码分享</span><br><span class="line">password: 123456</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="给文章添加评论功能"><a href="#给文章添加评论功能" class="headerlink" title="给文章添加评论功能"></a>给文章添加评论功能</h2><p>评论是博客交互的重要方式之一，当别人看了你的文章，有问题想跟你探讨，评论是最简单交流方式。<br>在很多<code>hexo</code>主题都内置了第三方评论的系统，较常见的有：<br><a target="_blank" rel="noopener" href="http://duoshuo.com/">多说</a><br><a target="_blank" rel="noopener" href="https://changyan.kuaizhan.com/">畅言</a><br><a target="_blank" rel="noopener" href="https://github.com/xcss/Valine">Valine</a><br><a target="_blank" rel="noopener" href="https://disqus.com/">Disqus</a><br><a target="_blank" rel="noopener" href="http://www.uyan.cc/">友言</a><br><a target="_blank" rel="noopener" href="https://github.com/imsun/gitment">gitment</a><br>一般注册平台，创建应用后，平台会给你一个<code>appid</code>和<code>appkey</code>。把这些信息填写到<code>主题配置文件</code>中即可。以我注册了<code>畅言平台</code>为例，查找<code>主题配置文件</code>中的<code>changyan</code>字段，按说明设置即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">changyan:</span><br><span class="line">  enable: true</span><br><span class="line">  appid: 这里写你在畅言的appid</span><br><span class="line">  appkey: 这里写上你在畅言的appkey</span><br></pre></td></tr></table></figure>
+
+<p>设置好之后，<code>hexo clean</code>并重新<code>hexo g</code>生成一下就可以了,所有新建的页面都将自动开启评论。<br>如果要关闭新建页面的评论功能,请在页面的<code>Front-matter</code>里添加<code>comments</code>字段，并将值设置为<code>false</code>,如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2021-04-20 16:00:00</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p>当博文中有少量图片是，可以直接把图片存放在<code>source</code>文件夹中，但图片会占据大量的存储的空间，加载相对缓慢，我们可以考虑把文章里的图片上传到某个网站，然后获得外部链接，写文章时使用<code>Markdown</code>语法，<code>![图片信息](外部链接)</code>, 完成图片的插入，这种网站就被称为图床。建议使用比较知名的，比如：<code>腾讯云</code>、<code>网易蜂巢</code>、<code>七牛云</code>、<code>京东云</code>等。</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a target="_blank" rel="noopener" href="https://lixint.github.io/hexo-theme-diy.html">Hexo 博客主题安装及 Next 主题个性化修改</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44219883/article/details/105178206?spm=1001.2014.3001.5501">Hexo+next 主题配置踩的坑</a><br><a target="_blank" rel="noopener" href="https://siriusq.top/">Sirius</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程 - 知乎</a></p>
+<hr>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="The ZYZ 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="The ZYZ 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>The ZYZ
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://yizhe-zheng.github.io/2021/04/20/Github&hexo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99&next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE/" title="Github&amp;hexo创建个人静态网站&amp;next主题优化配置">https://yizhe-zheng.github.io/2021/04/20/Github&hexo创建个人静态网站&next主题优化配置/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/next%E4%B8%BB%E9%A2%98/" rel="tag"># next主题</a>
+              <a href="/tags/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag"># 主题优化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/20/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="SOHUCS"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%80%E4%B8%AA-Github-%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.</span> <span class="nav-text">注册一个 Github 账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%AE%BE%E7%BD%AE-Git"><span class="nav-number">2.</span> <span class="nav-text">安装设置 Git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Node-js-%E5%92%8C-npm"><span class="nav-number">3.</span> <span class="nav-text">安装 Node.js 和 npm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Hexo-%E7%94%9F%E6%88%90%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">安装 Hexo,生成博客文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.</span> <span class="nav-text">Hexo 命令介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%8A%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub"><span class="nav-number">6.</span> <span class="nav-text">把静态网页部署到 GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">next 主题配置优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-next-%E4%B8%BB%E9%A2%98"><span class="nav-number">7.1.</span> <span class="nav-text">下载 next 主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98%E4%B8%BA-next%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">7.2.</span> <span class="nav-text">修改主题为 next，并进行基本配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F"><span class="nav-number">7.3.</span> <span class="nav-text">设置博客头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-number">7.4.</span> <span class="nav-text">设置网站图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%B5%9E%E8%B5%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">7.5.</span> <span class="nav-text">设置赞赏功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%85%A8%E7%AB%99%E6%96%87%E7%AB%A0%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%8A%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF"><span class="nav-number">7.6.</span> <span class="nav-text">实现全站文章字数统计及阅读时长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB"><span class="nav-number">7.7.</span> <span class="nav-text">设置加载动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">7.8.</span> <span class="nav-text">增加本地搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4"><span class="nav-number">7.9.</span> <span class="nav-text">网页底部添加网站运行时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E7%83%9F%E8%8A%B1%E7%88%86%E7%82%B8%E6%95%88%E6%9E%9C"><span class="nav-number">7.10.</span> <span class="nav-text">增加烟花爆炸效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#404-%E9%A1%B5%E9%9D%A2%E5%88%9B%E5%BB%BA"><span class="nav-number">7.11.</span> <span class="nav-text">404 页面创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-README-md-%E6%96%87%E4%BB%B6"><span class="nav-number">7.12.</span> <span class="nav-text">添加 README.md 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90"><span class="nav-number">7.13.</span> <span class="nav-text">添加网易云音乐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">7.14.</span> <span class="nav-text">添加动态背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-number">7.15.</span> <span class="nav-text">添加文章目录功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%AB%99%E8%83%8C%E6%99%AF"><span class="nav-number">7.16.</span> <span class="nav-text">网站背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8E%8B%E7%BC%A9"><span class="nav-number">7.17.</span> <span class="nav-text">静态资源压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0"><span class="nav-number">7.18.</span> <span class="nav-text">写博客文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE%E5%92%8C%E5%88%86%E7%B1%BB"><span class="nav-number">7.19.</span> <span class="nav-text">创建标签和分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86%E8%AE%BF%E9%97%AE"><span class="nav-number">7.20.</span> <span class="nav-text">文章加密访问</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">7.21.</span> <span class="nav-text">给文章添加评论功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BA%8A"><span class="nav-number">7.22.</span> <span class="nav-text">图床</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">7.23.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="The ZYZ"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">The ZYZ</p>
+  <div class="site-description" itemprop="description">一直想变成程序猿的通信狗</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Yizhe-Zheng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Yizhe-Zheng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhengzhe1996@outlook.com" title="E-Mail → mailto:zhengzhe1996@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+<div id="music163player">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1381930398&auto=1&height=66"></iframe>
+</div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">The ZYZ</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">19k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">17 分钟</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/20/2021 00:00:00");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='255,51,51' opacity='0.9' zIndex='-1' count='160' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script>
+  NexT.utils.loadComments(document.querySelector('#SOHUCS'), () => {
+    var appid = 'cyvpY8MXg';
+    var conf = 'cd733160bf6cdffdef34f159e792158f';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  });
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+</body>
+</html>
